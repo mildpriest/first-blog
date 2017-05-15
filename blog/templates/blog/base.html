@@ -10,10 +10,16 @@
         <body>
             <div class="page-header">
                 {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 {% endif %}
                 <h1><a href="/">provi's Blog</a></h1>
                 <p><b>DEV history</b></p>
+                <ul class="menu">
+                    <li><a href="/">전체보기</a></li>
+                    <li><a href="">파이썬</a></li>
+                    <li><a href="">자바 + 스프링</a></li>
+                    <li><a href="">자바스크립트</a></li>
+                </ul>
             </div>
 
             <div class="content container">

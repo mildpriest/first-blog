@@ -99,6 +99,7 @@ h4 {
 
 .post p {
     margin: 20px 0px 0px 0px;
+    font-family: 'Nanum Gothic Coding';
 }
 
 .post a {
@@ -113,4 +114,5 @@ h4 {
     border-top:1px solid #eee;
     margin: 20px 0px 20px 20px;
     padding-top: 10px;
+    font-family: 'Nanum Gothic Coding';
 }

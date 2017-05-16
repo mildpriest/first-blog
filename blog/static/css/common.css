@@ -12,10 +12,6 @@ a {
     text-decoration:none;
 }
 
-body {
-
-}
-
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
@@ -69,6 +65,9 @@ body {
 h1, h2, h3, h4 {
     font-family: 'Nanum Brush Script';
 }
+h4 {
+    margin-bottom: -18px;
+}
 
 .date {
     float: right;
@@ -96,4 +95,22 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+.post p {
+    margin: 20px 0px 0px 0px;
+}
+
+.post a {
+    margin: 10px 10px 0px 0px;
+}
+
+.button {
+    margin-left: 20px;
+}
+
+.comment {
+    border-top:1px solid #eee;
+    margin: 20px 0px 20px 20px;
+    padding-top: 10px;
 }

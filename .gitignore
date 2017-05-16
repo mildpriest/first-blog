@@ -4,3 +4,4 @@ myvenv
 db.sqlite3
 .DS_Store
 blog/migrations/0002_post_category.py
+blog/migrations/0003_comment.py

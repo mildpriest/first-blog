@@ -3,9 +3,19 @@
 {% block content %}
     {% for post in posts %}
         <div class="post">
+            {% if post.category == 'py' %}
+                <h4>- python -</h4>
+            {% endif %}
+            {% if post.category == 'java' %}
+                <h4>- java & spring -</h4>
+            {% endif %}
+            {% if post.category == 'javascript' %}
+                <h4>- javascript -</h4>
+            {% endif %}
             <h1><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <!-- <p>{{ post.text|linebreaksbr }}</p> -->
             <p>published: {{ post.published_date }}</p>
+            <a href="{% url 'detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
     {% endfor %}
 {% endblock content %}

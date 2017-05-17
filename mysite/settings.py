@@ -25,7 +25,7 @@ SECRET_KEY = '+u+wl_+n1hsx)i-b3a7f9-eurh0%6^wq_w7)j-r%*x@y9jw5d1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://provi.pythonanywhere.com/']
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr' 
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
 

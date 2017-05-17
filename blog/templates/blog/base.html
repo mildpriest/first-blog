@@ -1,7 +1,12 @@
+<!DOCTYPE html>
+
 {% load staticfiles %}
-<html>
+<html lang="ko">
         <head>
             <title>provi's blog</title>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -16,9 +21,9 @@
                 <p><b>DEV history</b></p>
                 <ul class="menu">
                     <li><a href="/">전체보기</a></li>
-                    <li><a href="{% url 'ctg_list_py' %}">파이썬</a></li>
-                    <li><a href="{% url 'ctg_list_java' %}">자바 + 스프링</a></li>
-                    <li><a href="{% url 'ctg_list_javascript' %}">자바스크립트</a></li>
+                    <li><a href="/category/py">파이썬</a></li>
+                    <li><a href="/category/java">자바 + 스프링</a></li>
+                    <li><a href="/category/javascript">자바스크립트</a></li>
                 </ul>
             </div>
 

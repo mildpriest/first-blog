@@ -5,3 +5,5 @@ db.sqlite3
 .DS_Store
 blog/migrations/0002_post_category.py
 blog/migrations/0003_comment.py
+blog/migrations/0004_auto_20170517_1608.py
+blog/migrations/0006_auto_20170517_1619.py

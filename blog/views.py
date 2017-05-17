@@ -7,25 +7,26 @@ from .models import Post, Comment
 from .porm import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
+
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
     return render(request, 'blog/index.html', {'posts': posts})
 
-def ctg_list_py(request):
-    posts = Post.objects.filter(category='py').order_by('-created_date')
+
+def ctg_list(request, ctg):
+    if ctg == 'py':
+        posts = Post.objects.filter(category=1).order_by('-created_date')
+    elif ctg == 'java':
+        posts = Post.objects.filter(category=2).order_by('-created_date')
+    elif ctg == 'javascript':
+        posts = Post.objects.filter(category=3).order_by('-created_date')
     return render(request, 'blog/index.html', {'posts': posts})
 
-def ctg_list_java(request):
-    posts = Post.objects.filter(category='java+spring').order_by('-created_date')
-    return render(request, 'blog/index.html', {'posts': posts})
-
-def ctg_list_javascript(request):
-    posts = Post.objects.filter(category='javascript').order_by('-created_date')
-    return render(request, 'blog/index.html', {'posts': posts})
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/detail.html', {'post': post})
+
 
 def post_new(request):
     if request.method == "POST":
@@ -39,6 +40,7 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'blog/edit.html', {'form': form})
+
 
 def edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -54,6 +56,7 @@ def edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/edit.html', {'form': form})
 
+
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -67,11 +70,13 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
+
 @login_required
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return redirect('detail', pk=comment.post.pk)
+
 
 @login_required
 def comment_remove(request, pk):

@@ -1,12 +1,5 @@
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-
-h1 a {
-    color: #FCA205;
-}
 
 a {
     text-decoration:none;
@@ -27,7 +20,7 @@ body {
 }
 
 .page-header {
-    background-color: #ff9400;
+    background-color: #ace;
     margin-top: 0;
     margin-bottom: 30px;
     padding: 20px 20px 20px 40px;
@@ -50,7 +43,7 @@ body {
     display:inline;
     border-left:1px solid #000000;
     padding:0 20px;
-    font-family: 'Nanum Brush Script';
+    font-family: 'Nanum Pen Script';
 }
 
 .page-header ul li:first-child{
@@ -64,13 +57,13 @@ body {
 }
 
 .page-footer {
-    background-color: #ffffb0;
+    background-color: #ace;
     margin-top: 20;
     padding: 10px 10px 10px 40px;
 }
 
 .page-footer h1, .page-footer h1 a, .page-footer h1 a:visited, .page-footer h1 a:active {
-    color: #FCA205;
+    color: #fff;
     font-size: 14pt;
 }
 
@@ -81,7 +74,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Nanum Brush Script';
+    font-family: 'Nanum Pen Script';
 }
 h4 {
     margin-bottom: -18px;
@@ -101,7 +94,7 @@ h4 {
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+    color: #fff;
     float: right;
     font-size: 26pt;
     margin-right: 20px;

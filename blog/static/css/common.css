@@ -12,15 +12,30 @@ a {
     text-decoration:none;
 }
 
+hr {
+    border-top: 2px solid #cccccc;
+}
+
+html {
+    background-color: #efefef;
+}
+
+body {
+    max-width: 800px;
+    position: relative;
+    margin: 0 auto;
+}
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
+    margin-bottom: 30px;
     padding: 20px 20px 20px 40px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 36pt;
+    font-size: 40pt;
     text-decoration: none;
 }
 
@@ -60,7 +75,7 @@ a {
 }
 
 .content {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 h1, h2, h3, h4 {
@@ -107,13 +122,9 @@ h4 {
     margin: 10px 10px 0px 0px;
 }
 
-.button {
-    margin-left: 20px;
-}
-
 .comment {
     border-top:1px solid #eee;
-    margin: 20px 0px 20px 20px;
+    margin: 20px 0px 20px 0px;
     padding-top: 10px;
     font-family: 'Nanum Gothic Coding';
 }

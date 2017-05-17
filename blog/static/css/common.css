@@ -75,7 +75,9 @@ body {
 }
 
 .content {
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width:auto;
 }
 
 h1, h2, h3, h4 {

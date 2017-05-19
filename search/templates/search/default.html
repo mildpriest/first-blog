@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="search">
+
+        <h2>검색페이지 입니다. <small>(@by <a href="http://daum.net" target="_blank">Daum</a>)</small></h2>
+        <div class ="search_area">
+            <input type="text" class="search_word" value="{{word}}" placeholder="요기 검색어 입력!"/>
+            <button class="search_btn">Go!</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.search_btn').click(function(){
+                goSearch();
+            });
+        });
+
+        function goSearch(){
+            var word = $('.search_word').val();
+
+            if(word.length == 0){
+                alert('검색어를 입력하세요.');
+            } else {
+                location.href="/search/" + word;
+            }
+        }
+
+    </script>
+{% endblock %}

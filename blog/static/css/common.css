@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 
+/* 공통 */
 a {
     text-decoration:none;
 }
@@ -19,6 +20,15 @@ body {
     margin: 0 auto;
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Nanum Pen Script';
+}
+h4 {
+    margin-bottom: -18px;
+}
+
+
+/* base */
 .page-header {
     background-color: #ace;
     margin-top: 0;
@@ -63,21 +73,22 @@ body {
 }
 
 .page-footer h1, .page-footer h1 a, .page-footer h1 a:visited, .page-footer h1 a:active {
+    padding-top: 10px;
+    margin-bottom: 0px;
     color: #fff;
     font-size: 14pt;
 }
 
+.page-footer img {
+    width: 50px;
+    margin-top: 20px;
+}
+
+/* post */
 .content {
     margin-left: 20px;
     margin-right: 20px;
     width:auto;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Nanum Pen Script';
-}
-h4 {
-    margin-bottom: -18px;
 }
 
 .date {
@@ -122,4 +133,18 @@ h4 {
     margin: 20px 0px 20px 0px;
     padding-top: 10px;
     font-family: 'Nanum Gothic Coding';
+}
+
+/* search */
+.search {
+     margin-bottom: 50px;
+}
+
+.search .search_area {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.search .result {
+    margin-top: 30px;
 }

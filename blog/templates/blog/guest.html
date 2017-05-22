@@ -6,7 +6,7 @@
         <form method="POST" class="post-form">
             {% csrf_token %}
             <p>
-                <input class="id_text" type="text" name="text" id="id_text" max-length="200" placeholder=" 요기 입력 ! " />
+                <input class="id_text" type="text" name="text" id="id_text" max-length="120" placeholder=" 요기 입력 ! " />
                 <button type="submit" class="btn btn-default">남기기</button>
             </p>
 
@@ -16,10 +16,12 @@
 
     {% for note in notes.all %}
         <div class="comment">
-            <div class="date">
+            <p>
+                <div class="date">
                 {{ note.created_date }}
-            </div>
-            <p>{{ note.text|safe|linebreaks }}</p>
+                </div>
+                {{ note.text|safe|linebreaks }}
+        </p>
         </div>
     {% empty %}
         <div class="comment">

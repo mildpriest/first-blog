@@ -137,6 +137,7 @@ h4 {
 .post p {
     margin: 20px 0px 0px 0px;
     font-family: 'Nanum Gothic Coding';
+    word-break:break-all;
 }
 
 .post a {

@@ -3,8 +3,8 @@ from django.utils import timezone
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 
-from .models import Post, Comment
-from .porm import PostForm, CommentForm
+from .models import Post, Comment, Guest
+from .porm import PostForm, CommentForm, GuestForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -69,6 +69,21 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+
+def guest(request):
+    notes = Guest.objects.order_by('-created_date')
+
+    if request.method == "POST":
+        form = GuestForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.save()
+            return redirect('guest')
+    else:
+        form = GuestForm()
+
+    return render(request, 'blog/guest.html', {'form': form, 'notes': notes})
 
 
 @login_required

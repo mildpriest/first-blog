@@ -33,7 +33,7 @@ h4 {
     background-color: #ace;
     margin-top: 0;
     margin-bottom: 30px;
-    padding: 20px 20px 20px 40px;
+    padding: 20px 40px 20px 40px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
@@ -68,23 +68,34 @@ h4 {
 
 .page-footer {
     background-color: #ace;
-    margin-top: 20;
-    padding: 0px 10px 10px 40px;
+    padding: 15px 20px 15px 20px;
+}
+
+.page-footer .row {
+    margin: 10px 10px 10px 0px;
+}
+
+.page-footer .col-md-1 {
+    margin: 0px 10px 0px 0px;
+}
+
+.page-footer .col-md-10 {
+    margin: 5px 10px 0px 0px;
 }
 
 .page-footer h1, .page-footer h1 a, .page-footer h1 a:visited, .page-footer h1 a:active {
-    padding-top: 5px;
     margin-bottom: 0px;
     color: #fff;
     font-size: 14pt;
+    margin-top: 0px;
 }
 
 .page-footer img {
     width: 50px;
-    margin-top: 20px;
 }
 
 .page-footer p {
+    margin-bottom: 0px;
     color: #fff;
 }
 

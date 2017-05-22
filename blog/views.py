@@ -102,6 +102,6 @@ def comment_remove(request, pk):
 
 @login_required
 def guest_remove(request, pk):
-    guest = get_object_or_404(Guest, pk=pk)
-    guest.delete()
+    note = get_object_or_404(Guest, pk=pk)
+    note.delete()
     return redirect('guest')

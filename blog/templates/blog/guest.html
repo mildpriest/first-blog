@@ -14,10 +14,10 @@
 
     {% for note in notes.all %}
         <div class="comment">
-            <p>
+
                 <div class="date">{{ note.created_date|date:"y-m-d H:m" }}</div>
                 {{ note.text|safe|linebreaks }}
-        </p>
+
         </div>
     {% empty %}
         <div class="comment">

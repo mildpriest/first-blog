@@ -27,8 +27,8 @@
                     <!--<a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>-->
                 {% endif %}
             </div>
-            <strong>{{ comment.author }} 's comment</strong>
-            <p>{{ comment.text|safe|linebreaks }}</p>
+            <p><strong>{{ comment.author }} 's comment</strong></p>
+            {{ comment.text|safe|linebreaks }}
         </div>
     {% empty %}
         <div class="comment">

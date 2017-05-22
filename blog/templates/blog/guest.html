@@ -14,10 +14,14 @@
 
     {% for note in notes.all %}
         <div class="comment">
+            <div class="date">
+                {{ note.created_date|date:"y-m-d H:m" }}
+                {% if user.is_authenticated %}
+                    <a class="btn btn-default" href="{% url 'guest_remove' pk=note.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                {% endif %}
+            </div>
 
-                <div class="date">{{ note.created_date|date:"y-m-d H:m" }}</div>
-                {{ note.text|safe|linebreaks }}
-
+            {{ note.text|safe|linebreaks }}
         </div>
     {% empty %}
         <div class="comment">

@@ -98,3 +98,10 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('detail', pk=comment.post.pk)
+
+
+@login_required
+def guest_remove(request, pk):
+    guest = get_object_or_404(Guest, pk=pk)
+    guest.delete()
+    return redirect('guest')

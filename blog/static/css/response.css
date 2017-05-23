@@ -1,0 +1,40 @@
+
+@media screen and (max-width:667px) {
+
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+h4 {
+    margin-bottom: -10px;
+}
+
+p {
+    margin: 0px 0px 0px 0px;
+}
+
+.page-header {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 20px 40px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    font-size: 30pt;
+}
+
+.page-header ul{
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.post {
+    margin-bottom: 30px;
+}
+
+.post p {
+    margin-top: 10px;
+}
+
+}

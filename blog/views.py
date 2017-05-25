@@ -7,6 +7,9 @@ from .models import Post, Comment, Guest
 from .porm import PostForm, CommentForm, GuestForm
 from django.contrib.auth.decorators import login_required
 
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
 
 def post_list(request):
     posts = Post.objects.order_by('-created_date')
@@ -67,6 +70,7 @@ def add_comment_to_post(request, pk):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
+            send_email("provi's blog - 댓글이 등록되었습니다.", "http://www.provi.xyz/post/" + str(pk))
             return redirect('detail', pk=post.pk)
     else:
         form = CommentForm()
@@ -81,6 +85,7 @@ def guest(request):
         if form.is_valid():
             note = form.save(commit=False)
             note.save()
+            send_email("provi's blog - 방명록이 등록되었습니다.", "http://www.provi.xyz/guest/")
             return redirect('guest')
     else:
         form = GuestForm()
@@ -107,3 +112,8 @@ def guest_remove(request, pk):
     note = get_object_or_404(Guest, pk=pk)
     note.delete()
     return redirect('guest')
+
+
+def send_email(title, text):
+    res = send_mail(title, text, "provi.choi@gmail.com", ["provi.choi@gmail.com"], fail_silently=False)
+    return HttpResponse(' %s ' % res)

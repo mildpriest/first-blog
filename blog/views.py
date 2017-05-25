@@ -28,7 +28,7 @@ def detail(request, pk):
     return render(request, 'blog/detail.html', {'post': post})
 
 
-@login_required
+@login_required(login_url='/admin/login/')
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -43,7 +43,7 @@ def post_new(request):
     return render(request, 'blog/edit.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='/admin/login/')
 def edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -88,21 +88,21 @@ def guest(request):
     return render(request, 'blog/guest.html', {'form': form, 'notes': notes})
 
 
-@login_required
+@login_required(login_url='/admin/login/')
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return redirect('detail', pk=comment.post.pk)
 
 
-@login_required
+@login_required(login_url='/admin/login/')
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('detail', pk=comment.post.pk)
 
 
-@login_required
+@login_required(login_url='/admin/login/')
 def guest_remove(request, pk):
     note = get_object_or_404(Guest, pk=pk)
     note.delete()

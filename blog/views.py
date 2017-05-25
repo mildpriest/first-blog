@@ -70,7 +70,7 @@ def add_comment_to_post(request, pk):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            send_email("provi's blog - 댓글이 등록되었습니다.", "http://www.provi.xyz/post/" + str(pk))
+            send_email("provi's blog - 댓글이 등록되었습니다.", "\n작성자 : " + comment.author + "\n내용 : "+ comment.text + "\n\n" + "http://www.provi.xyz/post/" + str(pk))
             return redirect('detail', pk=post.pk)
     else:
         form = CommentForm()
@@ -85,7 +85,7 @@ def guest(request):
         if form.is_valid():
             note = form.save(commit=False)
             note.save()
-            send_email("provi's blog - 방명록이 등록되었습니다.", "http://www.provi.xyz/guest/")
+            send_email("provi's blog - 방명록이 등록되었습니다.", "\n내용 : " + note.text + "\n\n" + "http://www.provi.xyz/guest/")
             return redirect('guest')
     else:
         form = GuestForm()

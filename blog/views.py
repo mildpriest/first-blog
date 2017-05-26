@@ -16,7 +16,7 @@ from django.http import HttpResponse
 
 def post_list(request):
     posts_list = Post.objects.order_by('-created_date')
-    paginator = Paginator(posts_list, 3)
+    paginator = Paginator(posts_list, 4)
     page = request.GET.get('page')
 
     try:
@@ -37,7 +37,7 @@ def ctg_list(request, ctg):
     elif ctg == 'javascript':
         posts_list = Post.objects.filter(category=3).order_by('-created_date')
 
-    paginator = Paginator(posts_list, 5)
+    paginator = Paginator(posts_list, 4)
     page = request.GET.get('page')
 
     try:

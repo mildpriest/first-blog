@@ -1,28 +1,52 @@
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import redirect
+
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Post, Comment, Guest
 from .porm import PostForm, CommentForm, GuestForm
-from django.contrib.auth.decorators import login_required
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
 
 def post_list(request):
-    posts = Post.objects.order_by('-created_date')
+    posts_list = Post.objects.order_by('-created_date')
+    paginator = Paginator(posts_list, 3)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, 'blog/index.html', {'posts': posts})
 
 
 def ctg_list(request, ctg):
     if ctg == 'py':
-        posts = Post.objects.filter(category=1).order_by('-created_date')
+        posts_list = Post.objects.filter(category=1).order_by('-created_date')
     elif ctg == 'java':
-        posts = Post.objects.filter(category=2).order_by('-created_date')
+        posts_list = Post.objects.filter(category=2).order_by('-created_date')
     elif ctg == 'javascript':
-        posts = Post.objects.filter(category=3).order_by('-created_date')
+        posts_list = Post.objects.filter(category=3).order_by('-created_date')
+
+    paginator = Paginator(posts_list, 5)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, 'blog/index.html', {'posts': posts})
 
 

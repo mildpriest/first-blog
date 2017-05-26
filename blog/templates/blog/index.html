@@ -17,9 +17,36 @@
             <p>{{ post.published_date }}</p>
             <a href="{% url 'detail' pk=post.pk %}">댓글 : {{ post.approved_comments.count }}</a>
         </div>
+
     {% empty %}
         <div class="post">
             <h1>  등록된 글이 없습니다. </h1>
         </div>
     {% endfor %}
+
+    {% if posts|length > 0 %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    {% if posts.has_previous %}
+                        <a href="?page={{ posts.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    {% else %}
+                        <a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    <a href="?page={{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
+                </li>
+
+                <li>
+                    {% if posts.has_next %}
+                        <a href="?page={{ posts.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    {% else %}
+                        <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
 {% endblock content %}

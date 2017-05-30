@@ -37,4 +37,13 @@ p {
     margin-top: 10px;
 }
 
+.comment p {
+    margin-left: 0px;
+}
+
+.comment .date {
+    margin-right: 0px;
+}
+
+
 }

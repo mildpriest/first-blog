@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 
-/* 공통 */
+/******************** 공통 ********************/
 a {
     text-decoration:none;
 }
@@ -28,7 +28,7 @@ h4 {
 }
 
 
-/* base */
+/******************** base ********************/
 .page-header {
     background-color: #ace;
     margin-top: 0;
@@ -103,7 +103,7 @@ nav {
     text-align: center;
 }
 
-/* post */
+/******************** post ********************/
 .content {
     margin-left: 20px;
     margin-right: 20px;
@@ -148,27 +148,33 @@ nav {
     margin: 10px 10px 0px 0px;
 }
 
+.button {
+    margin-bottom: 20px;
+}
+
 .comment {
     border-top:1px solid #eee;
-    margin: 20px 0px 20px 0px;
+    margin: 0px 0px 0px 0px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: 'Nanum Gothic Coding';
+    height: auto;
 }
 
 .comment p {
     margin-left: 10px;
     word-break:break-all;
     width: 70%;
-    height: auto;
-    min-height: 20px;
+    min-height: 40px;
+    margin-bottom: 0px;
 }
 
 .comment .date {
     margin-right: 10px;
+    text-align: right;
 }
 
-/* search */
+/******************** search ********************/
 .search {
      margin-bottom: 50px;
 }
@@ -190,8 +196,7 @@ nav {
     color: #000;
 }
 
-/* guest */
-
+/******************** guest ********************/
 .guestForm {
     margin-bottom: 30px;
 }
@@ -209,3 +214,7 @@ nav {
     vertical-align: middle;
 }
 
+/******************** pagination ********************/
+nav ul.pagination a {
+    border: none;
+}

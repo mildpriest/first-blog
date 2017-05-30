@@ -15,7 +15,7 @@
     {% for note in notes %}
         <div class="comment">
             <div class="date">
-                {{ note.created_date|date:"y-m-d H:i" }}
+                {{ note.created_date|date:"y/m/d" }}<br>{{ note.created_date|date:"H:i" }}
                 {% if user.is_authenticated %}
                     <a class="btn btn-default" href="{% url 'guest_remove' pk=note.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                 {% endif %}
@@ -41,7 +41,7 @@
                 </li>
 
                 <li>
-                    <a href="/guest/page/{{ notes.number }}">[ {{ notes.number }} / {{ notes.paginator.num_pages }} ]</a>
+                    <a href="#"> {{ notes.number }} / {{ notes.paginator.num_pages }} </a>
                 </li>
 
                 <li>

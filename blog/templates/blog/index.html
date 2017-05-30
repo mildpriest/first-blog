@@ -40,11 +40,7 @@
                 </li>
 
                 <li>
-                    {% if ctg|length > 0 %}
-                        <a href="/category/{{ctg}}/page/{{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
-                    {% else %}
-                        <a href="/page/{{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
-                    {% endif %}
+                    <a href="#" >  {{ posts.number }} / {{ posts.paginator.num_pages }}  </a>
                 </li>
 
                 <li>

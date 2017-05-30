@@ -1,23 +1,30 @@
-from django.shortcuts import render
-from django.utils import timezone
 from django.shortcuts import redirect
-
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.utils import timezone
 
 from .models import Post, Comment, Guest
 from .porm import PostForm, CommentForm, GuestForm
 
-from django.core.mail import send_mail
-from django.http import HttpResponse
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def post_list(request):
     posts_list = Post.objects.order_by('-created_date')
     paginator = Paginator(posts_list, 4)
-    page = request.GET.get('page')
+    posts = paginator.page(1)
+
+    return render(request, 'blog/index.html', {'posts': posts})
+
+
+def post_list_page(request, page):
+    posts_list = Post.objects.order_by('-created_date')
+    paginator = Paginator(posts_list, 4)
 
     try:
         posts = paginator.page(page)
@@ -31,14 +38,27 @@ def post_list(request):
 
 def ctg_list(request, ctg):
     if ctg == 'py':
-        posts_list = Post.objects.filter(category=1).order_by('-created_date')
+        category_list = Post.objects.filter(category=1).order_by('-created_date')
     elif ctg == 'java':
-        posts_list = Post.objects.filter(category=2).order_by('-created_date')
+        category_list = Post.objects.filter(category=2).order_by('-created_date')
     elif ctg == 'javascript':
-        posts_list = Post.objects.filter(category=3).order_by('-created_date')
+        category_list = Post.objects.filter(category=3).order_by('-created_date')
 
-    paginator = Paginator(posts_list, 4)
-    page = request.GET.get('page')
+    paginator = Paginator(category_list, 4)
+    posts = paginator.page(1)
+
+    return render(request, 'blog/index.html', {'posts': posts, 'ctg': ctg})
+
+
+def ctg_list_page(request, ctg, page):
+    if ctg == 'py':
+        category_list = Post.objects.filter(category=1).order_by('-created_date')
+    elif ctg == 'java':
+        category_list = Post.objects.filter(category=2).order_by('-created_date')
+    elif ctg == 'javascript':
+        category_list = Post.objects.filter(category=3).order_by('-created_date')
+
+    paginator = Paginator(category_list, 4)
 
     try:
         posts = paginator.page(page)
@@ -47,7 +67,7 @@ def ctg_list(request, ctg):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'blog/index.html', {'posts': posts})
+    return render(request, 'blog/index.html', {'posts': posts, 'ctg': ctg})
 
 
 def detail(request, pk):
@@ -101,9 +121,7 @@ def add_comment_to_post(request, pk):
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
 
-def guest(request):
-    notes = Guest.objects.order_by('-created_date')
-
+def guest_page(request, page):
     if request.method == "POST":
         form = GuestForm(request.POST)
         if form.is_valid():
@@ -113,6 +131,36 @@ def guest(request):
             return redirect('guest')
     else:
         form = GuestForm()
+
+    notes_list = Guest.objects.order_by('-created_date')
+    paginator = Paginator(notes_list, 10)
+
+    try:
+        notes = paginator.page(page)
+    except PageNotAnInteger:
+        notes = paginator.page(1)
+    except EmptyPage:
+        notes = paginator.page(paginator.num_pages)
+
+    # logger.error(paginator.num_pages)
+
+    return render(request, 'blog/guest.html', {'form': form, 'notes': notes})
+
+
+def guest(request):
+    if request.method == "POST":
+        form = GuestForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.save()
+            send_email("provi's blog - 방명록이 등록되었습니다.", "\n내용 : " + note.text + "\n\n" + "http://www.provi.xyz/guest/")
+            return redirect('guest')
+    else:
+        form = GuestForm()
+
+    notes_list = Guest.objects.order_by('-created_date')
+    paginator = Paginator(notes_list, 10)
+    notes = paginator.page(1)
 
     return render(request, 'blog/guest.html', {'form': form, 'notes': notes})
 

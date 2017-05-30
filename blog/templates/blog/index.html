@@ -29,19 +29,31 @@
             <ul class="pagination">
                 <li>
                     {% if posts.has_previous %}
-                        <a href="?page={{ posts.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                        {% if ctg|length > 0 %}
+                            <a href="/category/{{ctg}}/page/{{ posts.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                        {% else %}
+                            <a href="/page/{{ posts.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                        {% endif %}
                     {% else %}
                         <a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                     {% endif %}
                 </li>
 
                 <li>
-                    <a href="?page={{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
+                    {% if ctg|length > 0 %}
+                        <a href="/category/{{ctg}}/page/{{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
+                    {% else %}
+                        <a href="/page/{{ posts.number }}">[ {{ posts.number }} / {{ posts.paginator.num_pages }} ]</a>
+                    {% endif %}
                 </li>
 
                 <li>
                     {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                        {% if ctg|length > 0 %}
+                            <a href="/category/{{ctg}}/page/{{ posts.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                        {% else %}
+                            <a href="/page/{{ posts.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                        {% endif %}
                     {% else %}
                         <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
                     {% endif %}

@@ -12,7 +12,7 @@
         </form>
     </div>
 
-    {% for note in notes.all %}
+    {% for note in notes %}
         <div class="comment">
             <div class="date">
                 {{ note.created_date|date:"y-m-d H:i" }}
@@ -28,6 +28,32 @@
             <p>등록된 글이 없습니다.</p>
         </div>
     {% endfor %}
+
+    {% if notes|length > 0 %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    {% if notes.has_previous %}
+                        <a href="/guest/page/{{ notes.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    {% else %}
+                        <a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    <a href="/guest/page/{{ notes.number }}">[ {{ notes.number }} / {{ notes.paginator.num_pages }} ]</a>
+                </li>
+
+                <li>
+                    {% if notes.has_next %}
+                        <a href="/guest/page/{{ notes.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    {% else %}
+                        <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
 
     <script>
         $(document).ready(function(){

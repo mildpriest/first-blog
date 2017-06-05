@@ -2,7 +2,7 @@
 @media screen and (max-width:667px) {
 
 h1 {
-    font-size: 24px;
+    font-size: 30px;
     margin-top: 10px;
 }
 
@@ -16,7 +16,7 @@ p {
 
 .page-header {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 20px 40px 20px 40px;
 }
 
@@ -34,7 +34,11 @@ p {
 }
 
 .post p {
-    margin-top: 10px;
+    font-size: small;
+}
+
+.post p img {
+    padding: 10px;
 }
 
 .comment p {

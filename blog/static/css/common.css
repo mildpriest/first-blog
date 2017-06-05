@@ -139,9 +139,18 @@ nav {
 }
 
 .post p {
-    margin: 20px 0px 0px 0px;
     font-family: 'Nanum Gothic Coding';
     word-break:break-all;
+}
+
+.post.detail p {
+    margin: 50px 0px 0px 0px;
+}
+
+.post p img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
 }
 
 .post a {

@@ -52,3 +52,8 @@ class Guest(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class FileUpload(models.Model):
+    name = models.CharField(max_length=50)
+    file = models.FileField(null=True)

@@ -104,6 +104,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # mail
 DEFAULT_FROM_EMAIL = 'provi.choi@gmail.com'
 SERVER_EMAIL = 'provi.choi@gmail.com'

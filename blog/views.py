@@ -11,7 +11,21 @@ from .porm import PostForm, CommentForm, GuestForm
 
 import logging
 
+from pprint import pprint
+import json, requests, random, re
+
 logger = logging.getLogger(__name__)
+
+ACCESS_TOKEN = "EAAaBkR9jOPUBAAZBuBPO61JzxC0h8d4fuSYLjZBXoGI5jV3To9tqvL1GZCZBkhJpGqasPWnwb4hYJ3Yih8mrNo5I7ZCZC8b1BJ5MCP94nVCVCeZCYRStrYdOmLaKgUzZBTBliArfbIOTOawlINSVJs17AuERZBWftTFy5WEekhf1mmQZDZD"
+FB_IDENTITY = "1282792875171205"
+
+
+def post_fb_message(fb_id, rec_msg):
+    # joke_text = requests.get("http://api.icndb.com/jokes/random/").json()['value']['joke']
+    post_message_url = "https://graph.facebook.com/v2.6/me/messages?access_token=%s"%ACCESS_TOKEN
+    response_msg = json.dumps({"recipient":{"id":fb_id}, "message":{"text":rec_msg}})
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    pprint(status.json())
 
 
 def post_list(request):
@@ -114,7 +128,8 @@ def add_comment_to_post(request, pk):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            send_email("provi's blog - 댓글이 등록되었습니다.", "\n작성자 : " + comment.author + "\n내용 : "+ comment.text + "\n\n" + "http://www.provi.xyz/post/" + str(pk))
+            # send_email("provi's blog - 댓글이 등록되었습니다.", "\n작성자 : " + comment.author + "\n내용 : "+ comment.text + "\n\n" + "http://www.provi.xyz/post/" + str(pk))
+            # post_fb_message(FB_IDENTITY, "provi's blog - 댓글이 등록되었습니다. ")
             return redirect('detail', pk=post.pk)
     else:
         form = CommentForm()
@@ -127,7 +142,7 @@ def guest_page(request, page):
         if form.is_valid():
             note = form.save(commit=False)
             note.save()
-            send_email("provi's blog - 방명록이 등록되었습니다.", "\n내용 : " + note.text + "\n\n" + "http://www.provi.xyz/guest/")
+            # send_email("provi's blog - 방명록이 등록되었습니다.", "\n내용 : " + note.text + "\n\n" + "http://www.provi.xyz/guest/")
             return redirect('guest')
     else:
         form = GuestForm()

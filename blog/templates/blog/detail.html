@@ -32,7 +32,7 @@
                 {% endif %}
             </div>
             <p><strong>{{ comment.author }} 's comment</strong></p>
-            {{ comment.text|safe|linebreaks }}
+            {{ comment.text|striptags }}
         </div>
     {% empty %}
         <div class="comment">

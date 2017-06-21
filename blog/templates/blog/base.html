@@ -1,42 +1,16 @@
 <!DOCTYPE html>
 
 {% load staticfiles %}
+{% spaceless %}
 <html lang="ko">
     <head>
-        <title>provi's blog</title>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="naver-site-verification" content="d7e482442be1ab93d8f333a8c6ce374219fb58be"/>
-        <meta name="description" content="provi's Blog  흔한 개발자의 Log...">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="provi's Blog">
-        <meta property="og:description" content="흔한 개발자의 Log...">
-        <meta property="og:image" content="http://www.provi.xyz/static/image/1_test.jpg">
-        <meta property="og:url" content="http://www.provi.xyz">
-
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        {% include "blog/include/blog_head.html" %}
         <link rel="stylesheet" href="{% static 'css/common.css' %}">
         <link rel="stylesheet" href="{% static 'css/response.css' %}">
-
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
     </head>
     <body>
         <div class="page-header">
-            {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
-            <h1><strong><a href="/">provi's Blog</a></strong></h1>
-            <p><b>DEV history</b> <a href="/fb_chatbot/chat_room">(go chat_beta)</a></p>
-            <ul class="menu">
-                <li><a href="/category/py">Python(+Django)</a></li>
-                <li><a href="/category/java">Java(+Spring)</a></li>
-                <li><a href="/category/server">Server</a></li>
-                <li><a href="/search">Search</a></li>
-                <li><a href="/guest">Guest</a></li>
-            </ul>
+            {% include "blog/include/blog_header.html" %}
         </div>
 
         <div class="content container">
@@ -47,21 +21,10 @@
                 </div>
             </div>
         </div>
-
         <div class="page-footer">
-            <div class="row">
-                <div class="col-md-1">
-                    <a href="javascript:alert('hello?');">
-                        <img src="/static/image/1_test.jpg" />
-                    </a>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <h1><a href="mailto:provi.choi@gmail.com">mailto : provi.choi@gmail.com</a> | <a href="https://www.instagram.com/haeng.bokk/" target="_blank">@행이복이 </a></h1>
-                    <p>© 2017. provi</p>
-                </div>
-            </div>
+            {% include "blog/include/blog_footer.html" %}
         </div>
+
     </body>
 
     <script>
@@ -75,3 +38,4 @@
 
     </script>
 </html>
+{% endspaceless %}

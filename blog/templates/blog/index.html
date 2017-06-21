@@ -5,21 +5,16 @@
         <div class="post">
             {% if post.category_id == 1 %}
                 <h4>- python -</h4>
-            {% endif %}
-            {% if post.category_id == 2 %}
+            {% elif post.category_id == 2 %}
                 <h4>- java & spring -</h4>
-            {% endif %}
-            {% if post.category_id == 3 %}
+            {% elif post.category_id == 3 %}
                 <h4>- javascript -</h4>
-            {% endif %}
-            {% if post.category_id == 4 %}
+            {% elif post.category_id == 4 %}
                 <h4>- etc -</h4>
-            {% endif %}
-            {% if post.category_id == 5 %}
+            {% elif post.category_id == 5 %}
                 <h4>- server -</h4>
             {% endif %}
-            <h1><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <!-- <p>{{ post.text|linebreaksbr }}</p> -->
+            <h1><a href="{% url 'detail' pk=post.pk %}" title="{{ post.text|striptags|truncatewords:'5' }}">{{ post.title }}</a></h1>
             <p>{{ post.published_date }}</p>
             <a href="{% url 'detail' pk=post.pk %}">댓글 : {{ post.approved_comments.count }}</a>
         </div>

@@ -49,6 +49,10 @@ p {
     margin-right: 0px;
 }
 
+.comment .txt {
+    margin-left: 0px;
+}
+
 .col-md-12 {
     padding: 0px 5px;
 }

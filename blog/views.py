@@ -61,6 +61,8 @@ def ctg_list(request, ctg):
         category_list = Post.objects.filter(category=4).order_by('-created_date')
     elif ctg == 'server':
         category_list = Post.objects.filter(category=5).order_by('-created_date')
+    elif ctg == 'qa':
+        category_list = Post.objects.filter(category=6).order_by('-created_date')
 
     paginator = Paginator(category_list, 4)
     posts = paginator.page(1)
@@ -79,6 +81,8 @@ def ctg_list_page(request, ctg, page):
         category_list = Post.objects.filter(category=4).order_by('-created_date')
     elif ctg == 'server':
         category_list = Post.objects.filter(category=5).order_by('-created_date')
+    elif ctg == 'qa':
+        category_list = Post.objects.filter(category=6).order_by('-created_date')
 
     paginator = Paginator(category_list, 4)
 

@@ -32,7 +32,7 @@
                 {% endif %}
             </div>
             <p><strong>{{ comment.author }} 's comment</strong></p>
-            {{ comment.text|striptags }}
+            <div class="txt">{{ comment.text|striptags }}</div>
         </div>
     {% empty %}
         <div class="comment">

@@ -13,6 +13,8 @@
                 <h4>- etc -</h4>
             {% elif post.category_id == 5 %}
                 <h4>- server -</h4>
+            {% elif post.category_id == 6 %}
+                <h4>- QA -</h4>
             {% endif %}
             <h1><a href="{% url 'detail' pk=post.pk %}" title="{{ post.text|striptags|truncatewords:'5' }}">{{ post.title }}</a></h1>
             <p>{{ post.published_date }}</p>
